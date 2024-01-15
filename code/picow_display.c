@@ -1,8 +1,10 @@
-#include "pico/stdlib.h"
-#include "pico/cyw43_arch.h"
+#include <stdio.h>
+#include <stdbool.h>
+#include "pico\stdlib.h"
+#include "pico\cyw43_arch.h"
 
 int main() {
-    stdio_init_all();
+    
     if (cyw43_arch_init()) {
         printf("Wi-Fi init failed");
         return -1;
