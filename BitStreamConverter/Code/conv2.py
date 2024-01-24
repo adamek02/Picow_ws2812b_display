@@ -1,6 +1,17 @@
-import cv2
 import glob
 import os
+
+try:
+    import cv2
+except ModuleNotFoundError:
+    # If cv2 is not installed, try installing it
+    try:
+        import subprocess
+        subprocess.check_call(["pip", "install", "opencv-python"])
+        import cv2  # Try importing again after installation
+    except Exception as e:
+        print(f"Error installing or importing 'cv2': {e}")
+        exit()
 
 # Define the input and output folders
 input_folder = '../Input'
