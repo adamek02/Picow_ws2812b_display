@@ -1,29 +1,18 @@
-cmake_minimum_required(VERSION 3.13)
+cmake_minimum_required(VERSION 3.12)
 
-set(PROJECT picow_display)
 set(PICO_BOARD pico_w)
 
-# Pull in SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-include(pico_extras_import_optional.cmake)
+include(pico_extras_import.cmake)
 
-project(${PROJECT} C CXX ASM)
+project(picow_display C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
 
-if (PICO_CYW43_SUPPORTED) # set by PICO_BOARD=pico_w
-
-endif()
-
-
-# Initialize the SDK
 pico_sdk_init()
 
+add_subdirectory(lib/no-OS-FatFS/FatFs_SPI build)
+add_subdirectory(code)
 
-    # enable usb output, disable uart output
-  #  pico_enable_stdio_usb(${PROJECT} 1)
-   # pico_enable_stdio_uart(${PROJECT} 0)
-
-    add_subdirectory(code)
 
