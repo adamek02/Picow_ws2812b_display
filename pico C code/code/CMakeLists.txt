@@ -1,13 +1,19 @@
-add_executable(${PROJECT}
-        ${PROJECT}.c
-        )
+add_executable(picow_display
+    pico_display.c
+    hw_config.c
+    )
 
-target_include_directories(${PROJECT} PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}
-        ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts
-        )
-target_link_libraries(${PROJECT}
-        pico_cyw43_arch_none
-        pico_stdlib
-        )
-pico_add_extra_outputs(${PROJECT})
+target_link_libraries(picow_display
+    FatFs_SPI
+
+    pico_stdlib
+    pico_multicore
+    pico_sd_card
+    
+    hardware_gpio
+    hardware_sync
+    hardware_spi
+    hardware_dma
+    )
+
+pico_add_extra_outputs(picow_display code)
