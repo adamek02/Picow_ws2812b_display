@@ -115,7 +115,6 @@ def process_frame(frame_resized):
 
     mapped_pixels_modified_output_flat = mapped_pixels_modified_output.flatten()
 
-    # Extract GRB values and pack into bytes for the modified order
     binary_data_modified = (mapped_pixels_modified_output_flat.tobytes())
 
     return binary_data_modified
